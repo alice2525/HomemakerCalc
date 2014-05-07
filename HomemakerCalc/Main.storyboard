@@ -129,7 +129,7 @@
                         <color key="backgroundColor" red="0.97467138107637208" green="0.98512647748335869" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZKM-ly-wr1">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="mk0-Rg-DRJ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" id="mk0-Rg-DRJ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zhJ-Yb-DdN">
                                 <rect key="frame" x="233" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
