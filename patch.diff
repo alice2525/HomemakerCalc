@@ -1,0 +1,2134 @@
+From 2165bae794a816edda7941a64ad47c47bda1264b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E3=81=82=E3=82=8A=E3=81=99=E6=96=99=E7=90=86=E9=95=B7?=
+ <alice0398@gmail.com>
+Date: Fri, 2 May 2014 21:11:45 +0900
+Subject: [PATCH] =?UTF-8?q?[=E3=81=82=E3=82=8A=E3=81=99=E6=96=99=E7=90=86?=
+ =?UTF-8?q?=E9=95=B7=202014/05/02]=20=E3=81=8A=E8=B2=A1=E5=B8=83=E9=9B=BB?=
+ =?UTF-8?q?=E5=8D=93=20=E3=80=80=E6=96=B0=E8=A6=8F=E4=BD=9C=E6=88=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ HomemakerCalc/AppDelegate.h                        |  16 +
+ HomemakerCalc/AppDelegate.m                        |  48 +++
+ .../AppIcon.appiconset/Contents.json               |  23 +
+ .../LaunchImage.launchimage/Contents.json          |  23 +
+ HomemakerCalc/Main.storyboard                      | 170 ++++++++
+ HomemakerCalc/ViewController.h                     |  28 ++
+ HomemakerCalc/ViewController.m                     | 183 ++++++++
+ HomemakerCalc/en.lproj/InfoPlist.strings           |   2 +
+ HomemakerCalc/main.m                               |  18 +
+ HomemakerCalc/お財布電卓-Info.plist           |  40 ++
+ HomemakerCalc/お財布電卓-Prefix.pch           |  16 +
+ HomemakerCalcTests/HomemakerCalcTests.m            |  34 ++
+ HomemakerCalcTests/en.lproj/InfoPlist.strings      |   2 +
+ HomemakerCalcTests/お財布電卓Tests-Info.plist |  22 +
+ お財布電卓.xcodeproj/project.pbxproj          | 469 +++++++++++++++++++++
+ .../project.xcworkspace/contents.xcworkspacedata   |   7 +
+ .../UserInterfaceState.xcuserstate                 | Bin 0 -> 32061 bytes
+ .../WorkspaceSettings.xcsettings                   |  10 +
+ .../UserInterfaceState.xcuserstate                 | Bin 0 -> 19437 bytes
+ .../xcdebugger/Breakpoints_v2.xcbkptlist           |   5 +
+ .../xcschemes/HomemakerCalc.xcscheme               |  96 +++++
+ .../xcschemes/xcschememanagement.plist             |  27 ++
+ .../xcschemes/HomemakerCalc.xcscheme               |  96 +++++
+ .../xcschemes/xcschememanagement.plist             |  27 ++
+ 24 files changed, 1362 insertions(+)
+ create mode 100644 HomemakerCalc/AppDelegate.h
+ create mode 100644 HomemakerCalc/AppDelegate.m
+ create mode 100644 HomemakerCalc/Images.xcassets/AppIcon.appiconset/Contents.json
+ create mode 100644 HomemakerCalc/Images.xcassets/LaunchImage.launchimage/Contents.json
+ create mode 100644 HomemakerCalc/Main.storyboard
+ create mode 100644 HomemakerCalc/ViewController.h
+ create mode 100644 HomemakerCalc/ViewController.m
+ create mode 100644 HomemakerCalc/en.lproj/InfoPlist.strings
+ create mode 100644 HomemakerCalc/main.m
+ create mode 100644 HomemakerCalc/お財布電卓-Info.plist
+ create mode 100644 HomemakerCalc/お財布電卓-Prefix.pch
+ create mode 100644 HomemakerCalcTests/HomemakerCalcTests.m
+ create mode 100644 HomemakerCalcTests/en.lproj/InfoPlist.strings
+ create mode 100644 HomemakerCalcTests/お財布電卓Tests-Info.plist
+ create mode 100644 お財布電卓.xcodeproj/project.pbxproj
+ create mode 100644 お財布電卓.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+ create mode 100644 お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/chefalice.xcuserdatad/UserInterfaceState.xcuserstate
+ create mode 100644 お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/chefalice.xcuserdatad/WorkspaceSettings.xcsettings
+ create mode 100644 お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/morikawaakira.xcuserdatad/UserInterfaceState.xcuserstate
+ create mode 100644 お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+ create mode 100644 お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcschemes/HomemakerCalc.xcscheme
+ create mode 100644 お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcschemes/xcschememanagement.plist
+ create mode 100644 お財布電卓.xcodeproj/xcuserdata/morikawaakira.xcuserdatad/xcschemes/HomemakerCalc.xcscheme
+ create mode 100644 お財布電卓.xcodeproj/xcuserdata/morikawaakira.xcuserdatad/xcschemes/xcschememanagement.plist
+
+diff --git a/HomemakerCalc/AppDelegate.h b/HomemakerCalc/AppDelegate.h
+new file mode 100644
+index 0000000..6d3e6cd
+--- /dev/null
++++ b/HomemakerCalc/AppDelegate.h
+@@ -0,0 +1,16 @@
++//
++//  AppDelegate.h
++//  HomemakerCalc
++//
++//  Created by 森川 明 on 2014/04/12.
++//  Copyright (c) 2014年 森川 明. All rights reserved.
++//
++
++#import <UIKit/UIKit.h>
++
++@interface AppDelegate : UIResponder <UIApplicationDelegate>
++
++@property (strong, nonatomic) UIWindow *window;
++
++
++@end
+diff --git a/HomemakerCalc/AppDelegate.m b/HomemakerCalc/AppDelegate.m
+new file mode 100644
+index 0000000..78b1218
+--- /dev/null
++++ b/HomemakerCalc/AppDelegate.m
+@@ -0,0 +1,48 @@
++//
++//  AppDelegate.m
++//  HomemakerCalc
++//
++//  Created by 森川 明 on 2014/04/12.
++//  Copyright (c) 2014年 森川 明. All rights reserved.
++//
++
++#import "AppDelegate.h"
++
++@implementation AppDelegate
++
++- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
++{
++    // Override point for customization after application launch.
++    return YES;
++}
++							
++- (void)applicationWillResignActive:(UIApplication *)application
++{
++    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
++    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
++}
++
++- (void)applicationDidEnterBackground:(UIApplication *)application
++{
++    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
++    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
++}
++
++- (void)applicationWillEnterForeground:(UIApplication *)application
++{
++    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
++}
++
++- (void)applicationDidBecomeActive:(UIApplication *)application
++{
++    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
++}
++
++- (void)applicationWillTerminate:(UIApplication *)application
++{
++    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
++}
++
++
++
++@end
+diff --git a/HomemakerCalc/Images.xcassets/AppIcon.appiconset/Contents.json b/HomemakerCalc/Images.xcassets/AppIcon.appiconset/Contents.json
+new file mode 100644
+index 0000000..a396706
+--- /dev/null
++++ b/HomemakerCalc/Images.xcassets/AppIcon.appiconset/Contents.json
+@@ -0,0 +1,23 @@
++{
++  "images" : [
++    {
++      "idiom" : "iphone",
++      "size" : "29x29",
++      "scale" : "2x"
++    },
++    {
++      "idiom" : "iphone",
++      "size" : "40x40",
++      "scale" : "2x"
++    },
++    {
++      "idiom" : "iphone",
++      "size" : "60x60",
++      "scale" : "2x"
++    }
++  ],
++  "info" : {
++    "version" : 1,
++    "author" : "xcode"
++  }
++}
+\ No newline at end of file
+diff --git a/HomemakerCalc/Images.xcassets/LaunchImage.launchimage/Contents.json b/HomemakerCalc/Images.xcassets/LaunchImage.launchimage/Contents.json
+new file mode 100644
+index 0000000..c79ebd3
+--- /dev/null
++++ b/HomemakerCalc/Images.xcassets/LaunchImage.launchimage/Contents.json
+@@ -0,0 +1,23 @@
++{
++  "images" : [
++    {
++      "orientation" : "portrait",
++      "idiom" : "iphone",
++      "extent" : "full-screen",
++      "minimum-system-version" : "7.0",
++      "scale" : "2x"
++    },
++    {
++      "orientation" : "portrait",
++      "idiom" : "iphone",
++      "subtype" : "retina4",
++      "extent" : "full-screen",
++      "minimum-system-version" : "7.0",
++      "scale" : "2x"
++    }
++  ],
++  "info" : {
++    "version" : 1,
++    "author" : "xcode"
++  }
++}
+\ No newline at end of file
+diff --git a/HomemakerCalc/Main.storyboard b/HomemakerCalc/Main.storyboard
+new file mode 100644
+index 0000000..9a67405
+--- /dev/null
++++ b/HomemakerCalc/Main.storyboard
+@@ -0,0 +1,170 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
++    <dependencies>
++        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
++    </dependencies>
++    <scenes>
++        <!--View Controller-->
++        <scene sceneID="ufC-wZ-h7g">
++            <objects>
++                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
++                    <layoutGuides>
++                        <viewControllerLayoutGuide type="top" id="jEI-br-AjP"/>
++                        <viewControllerLayoutGuide type="bottom" id="TxV-lY-0Km"/>
++                    </layoutGuides>
++                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
++                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
++                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                        <subviews>
++                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AcS-c1-BrU">
++                                <rect key="frame" x="36" y="104" width="248" height="30"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <color key="backgroundColor" red="0.80201814559999995" green="0.81062122680000004" blue="0.82286005429999998" alpha="1" colorSpace="calibratedRGB"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
++                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" keyboardType="numberPad" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
++                            </textField>
++                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZx-bH-VtY">
++                                <rect key="frame" x="36" y="166" width="120" height="30"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
++                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
++                            </textField>
++                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffO-60-b72">
++                                <rect key="frame" x="36" y="303" width="111" height="25"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <color key="backgroundColor" red="0.8130055458957145" green="0.82172648664229464" blue="0.83413298233695654" alpha="1" colorSpace="calibratedRGB"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
++                                <state key="normal" title="買う">
++                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
++                                </state>
++                                <connections>
++                                    <action selector="BuyButton:" destination="vXZ-lx-hvc" eventType="touchDown" id="GOO-sY-F27"/>
++                                </connections>
++                            </button>
++                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOa-SW-jAx">
++                                <rect key="frame" x="166" y="303" width="118" height="25"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <color key="backgroundColor" red="0.89088986736249998" green="0.90044625696429204" blue="0.91404127038043481" alpha="1" colorSpace="calibratedRGB"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
++                                <state key="normal" title="買わない">
++                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
++                                </state>
++                                <connections>
++                                    <action selector="DontBuyButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hp9-cA-d2k"/>
++                                </connections>
++                            </button>
++                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="予算" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfV-wf-iR1">
++                                <rect key="frame" x="36" y="81" width="42" height="21"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
++                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
++                                <nil key="highlightedColor"/>
++                            </label>
++                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="価格" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3a-lV-UlF">
++                                <rect key="frame" x="36" y="146" width="42" height="21"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
++                                <nil key="highlightedColor"/>
++                            </label>
++                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="残金" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzh-HQ-esi">
++                                <rect key="frame" x="36" y="204" width="42" height="21"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
++                                <nil key="highlightedColor"/>
++                            </label>
++                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="cTF-Qx-TFz">
++                                <rect key="frame" x="194" y="170" width="90" height="21"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <color key="backgroundColor" red="0.97467138109999996" green="0.98512647750000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
++                                <attributedString key="attributedText"/>
++                                <nil key="highlightedColor"/>
++                                <color key="shadowColor" red="0.97239422250000263" green="0.98777751846549233" blue="1" alpha="1" colorSpace="calibratedRGB"/>
++                                <size key="shadowOffset" width="18" height="-1"/>
++                            </label>
++                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="税込み価格" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpm-si-MJ0">
++                                <rect key="frame" x="194" y="146" width="90" height="21"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
++                                <nil key="highlightedColor"/>
++                            </label>
++                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEr-iZ-EDC">
++                                <rect key="frame" x="36" y="225" width="248" height="29"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
++                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
++                                <nil key="highlightedColor"/>
++                            </label>
++                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AtT-dw-vKq">
++                                <rect key="frame" x="36" y="262" width="248" height="30"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <color key="backgroundColor" red="0.81300554589999996" green="0.82172648660000003" blue="0.83413298229999999" alpha="1" colorSpace="calibratedRGB"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
++                                <state key="normal" title="計算">
++                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
++                                </state>
++                                <connections>
++                                    <action selector="CalicrationButton:" destination="vXZ-lx-hvc" eventType="touchDown" id="84o-IP-IhG"/>
++                                </connections>
++                            </button>
++                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTE-ea-9XX">
++                                <rect key="frame" x="112" y="228" width="172" height="21"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
++                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
++                                <nil key="highlightedColor"/>
++                            </label>
++                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu8-9v-oDd">
++                                <rect key="frame" x="194" y="72" width="90" height="30"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <color key="backgroundColor" red="0.81300554589999996" green="0.82172648660000003" blue="0.83413298229999999" alpha="1" colorSpace="calibratedRGB"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
++                                <state key="normal" title="購入履歴">
++                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
++                                </state>
++                                <connections>
++                                    <action selector="ToListButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xVm-k9-4wN"/>
++                                </connections>
++                            </button>
++                        </subviews>
++                        <color key="backgroundColor" red="0.97467138107637208" green="0.98512647748335869" blue="1" alpha="1" colorSpace="calibratedRGB"/>
++                    </view>
++                    <navigationItem key="navigationItem" id="ZKM-ly-wr1">
++                        <barButtonItem key="rightBarButtonItem" style="plain" id="mk0-Rg-DRJ">
++                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zhJ-Yb-DdN">
++                                <rect key="frame" x="233" y="5" width="71" height="33"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <color key="backgroundColor" red="0.81300554589999996" green="0.82172648660000003" blue="0.83413298229999999" alpha="1" colorSpace="calibratedRGB"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
++                                <state key="normal" title="リストへ">
++                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
++                                </state>
++                                <connections>
++                                    <action selector="ToListButton:" destination="vXZ-lx-hvc" eventType="touchDown" id="H2d-7E-hKn"/>
++                                </connections>
++                            </button>
++                            <color key="tintColor" red="0.81300554589999996" green="0.82172648660000003" blue="0.83413298229999999" alpha="1" colorSpace="calibratedRGB"/>
++                        </barButtonItem>
++                    </navigationItem>
++                    <connections>
++                        <outlet property="BugetLabel" destination="jfV-wf-iR1" id="efF-o5-5v5"/>
++                        <outlet property="CalcButton" destination="AtT-dw-vKq" id="ozZ-h2-dxe"/>
++                        <outlet property="CashText" destination="AcS-c1-BrU" id="tTN-nb-5R9"/>
++                        <outlet property="LogTextLabel" destination="WTE-ea-9XX" id="p9p-9J-hgf"/>
++                        <outlet property="MonyLabel" destination="yzh-HQ-esi" id="uuK-5B-NK1"/>
++                        <outlet property="PriceLabel" destination="f3a-lV-UlF" id="YQb-rf-BUg"/>
++                        <outlet property="PriceText" destination="rZx-bH-VtY" id="uj5-xl-T26"/>
++                        <outlet property="RemainCashLabel" destination="OEr-iZ-EDC" id="uls-Sq-c7p"/>
++                        <outlet property="TaxinPrice" destination="cTF-Qx-TFz" id="bFj-BN-GKl"/>
++                    </connections>
++                </viewController>
++                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
++            </objects>
++            <point key="canvasLocation" x="537" y="-61"/>
++        </scene>
++    </scenes>
++    <simulatedMetricsContainer key="defaultSimulatedMetrics">
++        <simulatedStatusBarMetrics key="statusBar"/>
++        <simulatedOrientationMetrics key="orientation"/>
++        <simulatedScreenMetrics key="destination" type="retina4"/>
++    </simulatedMetricsContainer>
++</document>
+diff --git a/HomemakerCalc/ViewController.h b/HomemakerCalc/ViewController.h
+new file mode 100644
+index 0000000..cbda473
+--- /dev/null
++++ b/HomemakerCalc/ViewController.h
+@@ -0,0 +1,28 @@
++//
++//  ViewController.h
++//  HomemakerCalc
++//
++//  Created by 森川 明 on 2014/04/12.
++//  Copyright (c) 2014年 森川 明. All rights reserved.
++//
++
++#import <UIKit/UIKit.h>
++
++@interface ViewController : UIViewController
++@property (weak, nonatomic) IBOutlet UIButton *CalcButton;
++@property (weak, nonatomic) IBOutlet UITextField *CashText;
++@property (weak, nonatomic) IBOutlet UITextField *PriceText;
++@property (weak, nonatomic) IBOutlet UILabel *BugetLabel;
++@property (weak, nonatomic) IBOutlet UILabel *PriceLabel;
++@property (weak, nonatomic) IBOutlet UILabel *TaxinPrice;
++@property (weak, nonatomic) IBOutlet UILabel *MonyLabel;
++@property (weak, nonatomic) IBOutlet UILabel *RemainCashLabel;
++@property (weak, nonatomic) IBOutlet UILabel *LogTextLabel;
++
++
++- (IBAction)CalicrationButton:(id)sender;
++- (IBAction)BuyButton:(id)sender;
++- (IBAction)DontBuyButton:(id)sender;
++- (IBAction)ToListButton:(id)sender;
++
++@end
+diff --git a/HomemakerCalc/ViewController.m b/HomemakerCalc/ViewController.m
+new file mode 100644
+index 0000000..f81a549
+--- /dev/null
++++ b/HomemakerCalc/ViewController.m
+@@ -0,0 +1,183 @@
++//
++//  ViewController.m
++//  HomemakerCalc
++//
++//  Created by 森川 明 on 2014/04/12.
++//  Copyright (c) 2014年 森川 明. All rights reserved.
++//
++
++#import "ViewController.h"
++
++@interface ViewController ()
++
++@end
++
++@implementation ViewController
++
++//使う物の準備
++int Cash;
++const float Tax = 1.08f;
++int taxinPriceNum;
++int Mony;
++int BuyCount = 0;
++NSArray *BuyArray;
++NSMutableArray *BuyLogArray;
++NSString *inputCashText;
++NSString *inputPriceText;
++NSString *LogText;
++NSString *TotalLog;
++NSString *DateString;
++NSString *BuyString;
++NSString *CountString;
++UIAlertView *alert;
++UIAlertView *cantBuyAlert;
++UIAlertView *coutionAlert;
++UIAlertView *logAleart;
++NSUserDefaults *Save;
++
++
++//アプリが起動された直後に呼ばれるところ
++- (void)viewDidLoad
++{
++    //キーボードを隠す処理の準備
++    [super viewDidLoad];
++    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeSoftKeyboard)];
++    [self.view addGestureRecognizer:gestureRecognizer];
++    
++    // Do any additional setup after loading the view, typically from a nib.
++    
++    //テキスト入力フォーム付きアラート
++    //初期化と設定
++    alert = [[UIAlertView alloc] initWithTitle:@"確認" message:@"購入する商品名を入力して下さい。"
++                                      delegate:self cancelButtonTitle:@"やっぱりやめる。" otherButtonTitles:@"購入！", nil];
++    
++    //アラートダイアログにフォーム設定
++    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
++    
++    
++    cantBuyAlert =
++    [[UIAlertView alloc] initWithTitle:@"買えません。" message:@"お金が足らんよ。"
++                              delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
++    
++    
++    coutionAlert =[[UIAlertView alloc] initWithTitle:@"注意" message:@"計算ボタンを押して下さい。"
++                                            delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
++    
++    
++    //購入力Array準備
++    BuyArray = [NSArray arrayWithObjects:nil];
++    BuyLogArray = [NSMutableArray array];
++    NSDateFormatter *df = [[NSDateFormatter alloc] init];
++    df.dateFormat  = @"yyyy/MM/dd";
++    DateString = [df stringFromDate:[NSDate date]];
++    
++    //アプリケーションを終了してもデータを保持する
++    Save = [NSUserDefaults standardUserDefaults];
++}
++
++
++- (void)didReceiveMemoryWarning
++{
++    [super didReceiveMemoryWarning];
++    // Dispose of any resources that can be recreated.
++}
++
++-(void)clearText{
++    //フォームのクリア
++    _PriceText.text = @"";
++    _TaxinPrice.text = @"";
++    _RemainCashLabel.text = @"";
++    _LogTextLabel.text = @"";
++    
++    taxinPriceNum = 0;
++}
++
++//キーボードを隠す処理
++- (void)closeSoftKeyboard {
++    [self.view endEditing: YES];
++}
++
++- (IBAction)CalicrationButton:(id)sender {
++    //ボタンを押されたら計算
++    
++    //予算項目
++    NSMutableString *text = [_CashText.text mutableCopy];
++    Cash = [text intValue];
++    
++    //商品価格項目
++    NSMutableString *inputPriceText = [_PriceText.text mutableCopy];
++    taxinPriceNum = [inputPriceText intValue] * Tax;
++    _TaxinPrice.text = [NSString stringWithFormat:@"%d円", taxinPriceNum];
++    
++    
++    //計算結果項目
++    Mony = Cash - taxinPriceNum;
++    _RemainCashLabel.text = [NSString stringWithFormat:@"%d円", Mony];
++    //予算金額より商品金額が高い場合、残金ラベルを赤文字にする
++    if(Mony <= 0){
++        _RemainCashLabel.textColor = [UIColor redColor];
++    }else{
++        _RemainCashLabel.textColor = [UIColor blackColor];
++    }
++}
++
++//購入ボタンの処理
++- (IBAction)BuyButton:(id)sender {
++    //①購入ボタンが押される前に計算処理を行ったか
++    if(taxinPriceNum == 0){
++        [coutionAlert show];
++    }else{
++        //②予算金額が商品購入価格を上回っていないか
++        if(Mony <= 0)
++        {
++            [cantBuyAlert show];
++            _LogTextLabel.text = @"買えませんでした。";
++        }else{
++            //③購入確定
++            [alert show];
++        }
++    }
++}
++
++- (IBAction)DontBuyButton:(id)sender {
++    //商品購入を行わない場合はフォームをクリア
++    [self clearText];
++}
++
++
++//購入ボタンを押した後の処理
++- (void)alertView:(UIAlertView *)alert clickedButtonAtIndex:(NSInteger)buttonIndex {
++    if (buttonIndex == 1) {
++        //購入ログ表示
++        LogText = [[[alert textFieldAtIndex:0] text] mutableCopy];
++        _LogTextLabel.text = [NSString stringWithFormat:@"%@ を購入しました",LogText];
++        TotalLog = [NSString stringWithFormat:@"%@\n%@を購入しました。\n商品金額:%d円\n残金:%d円",DateString,LogText,taxinPriceNum,Mony];
++        //ログをArrayで残す
++        [BuyLogArray insertObject:TotalLog atIndex:BuyCount];
++        NSLog(@"%@",BuyLogArray[BuyCount]);
++        
++        //フォームのクリア
++        [self clearText];
++        
++        //所持金計算
++        Cash = Mony;
++        _CashText.text= [NSString stringWithFormat:@"%d円", Mony];
++        BuyCount =  BuyCount+1;
++        
++        //キーボードを隠す
++        [self closeSoftKeyboard];
++    }else{
++        //キーボードを隠す
++        [self closeSoftKeyboard];
++    }
++}
++
++//購入履歴の処理
++- (IBAction)ToListButton:(id)sender {
++    //ログから購入履歴データを取得し、アラートで表示
++    logAleart =[[UIAlertView alloc] initWithTitle:@"購入履歴" message:TotalLog delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
++    
++    [logAleart show];
++}
++
++@end
+diff --git a/HomemakerCalc/en.lproj/InfoPlist.strings b/HomemakerCalc/en.lproj/InfoPlist.strings
+new file mode 100644
+index 0000000..477b28f
+--- /dev/null
++++ b/HomemakerCalc/en.lproj/InfoPlist.strings
+@@ -0,0 +1,2 @@
++/* Localized versions of Info.plist keys */
++
+diff --git a/HomemakerCalc/main.m b/HomemakerCalc/main.m
+new file mode 100644
+index 0000000..6a26ae1
+--- /dev/null
++++ b/HomemakerCalc/main.m
+@@ -0,0 +1,18 @@
++//
++//  main.m
++//  HomemakerCalc
++//
++//  Created by 森川 明 on 2014/04/12.
++//  Copyright (c) 2014年 森川 明. All rights reserved.
++//
++
++#import <UIKit/UIKit.h>
++
++#import "AppDelegate.h"
++
++int main(int argc, char * argv[])
++{
++    @autoreleasepool {
++        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
++    }
++}
+diff --git a/HomemakerCalc/お財布電卓-Info.plist b/HomemakerCalc/お財布電卓-Info.plist
+new file mode 100644
+index 0000000..d98bbc3
+--- /dev/null
++++ b/HomemakerCalc/お財布電卓-Info.plist
+@@ -0,0 +1,40 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>CFBundleDevelopmentRegion</key>
++	<string>en</string>
++	<key>CFBundleDisplayName</key>
++	<string>${PRODUCT_NAME}</string>
++	<key>CFBundleExecutable</key>
++	<string>${EXECUTABLE_NAME}</string>
++	<key>CFBundleIdentifier</key>
++	<string>akira-m..${PRODUCT_NAME:rfc1034identifier}</string>
++	<key>CFBundleInfoDictionaryVersion</key>
++	<string>6.0</string>
++	<key>CFBundleName</key>
++	<string>${PRODUCT_NAME}</string>
++	<key>CFBundlePackageType</key>
++	<string>APPL</string>
++	<key>CFBundleShortVersionString</key>
++	<string>1.0</string>
++	<key>CFBundleSignature</key>
++	<string>????</string>
++	<key>CFBundleVersion</key>
++	<string>1.0</string>
++	<key>LSRequiresIPhoneOS</key>
++	<true/>
++	<key>UIMainStoryboardFile</key>
++	<string>Main</string>
++	<key>UIRequiredDeviceCapabilities</key>
++	<array>
++		<string>armv7</string>
++	</array>
++	<key>UISupportedInterfaceOrientations</key>
++	<array>
++		<string>UIInterfaceOrientationPortrait</string>
++		<string>UIInterfaceOrientationLandscapeLeft</string>
++		<string>UIInterfaceOrientationLandscapeRight</string>
++	</array>
++</dict>
++</plist>
+diff --git a/HomemakerCalc/お財布電卓-Prefix.pch b/HomemakerCalc/お財布電卓-Prefix.pch
+new file mode 100644
+index 0000000..82a2bb4
+--- /dev/null
++++ b/HomemakerCalc/お財布電卓-Prefix.pch
+@@ -0,0 +1,16 @@
++//
++//  Prefix header
++//
++//  The contents of this file are implicitly included at the beginning of every source file.
++//
++
++#import <Availability.h>
++
++#ifndef __IPHONE_5_0
++#warning "This project uses features only available in iOS SDK 5.0 and later."
++#endif
++
++#ifdef __OBJC__
++    #import <UIKit/UIKit.h>
++    #import <Foundation/Foundation.h>
++#endif
+diff --git a/HomemakerCalcTests/HomemakerCalcTests.m b/HomemakerCalcTests/HomemakerCalcTests.m
+new file mode 100644
+index 0000000..eef5792
+--- /dev/null
++++ b/HomemakerCalcTests/HomemakerCalcTests.m
+@@ -0,0 +1,34 @@
++//
++//  HomemakerCalcTests.m
++//  HomemakerCalcTests
++//
++//  Created by 森川 明 on 2014/04/12.
++//  Copyright (c) 2014年 森川 明. All rights reserved.
++//
++
++#import <XCTest/XCTest.h>
++
++@interface HomemakerCalcTests : XCTestCase
++
++@end
++
++@implementation HomemakerCalcTests
++
++- (void)setUp
++{
++    [super setUp];
++    // Put setup code here. This method is called before the invocation of each test method in the class.
++}
++
++- (void)tearDown
++{
++    // Put teardown code here. This method is called after the invocation of each test method in the class.
++    [super tearDown];
++}
++
++- (void)testExample
++{
++    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
++}
++
++@end
+diff --git a/HomemakerCalcTests/en.lproj/InfoPlist.strings b/HomemakerCalcTests/en.lproj/InfoPlist.strings
+new file mode 100644
+index 0000000..477b28f
+--- /dev/null
++++ b/HomemakerCalcTests/en.lproj/InfoPlist.strings
+@@ -0,0 +1,2 @@
++/* Localized versions of Info.plist keys */
++
+diff --git a/HomemakerCalcTests/お財布電卓Tests-Info.plist b/HomemakerCalcTests/お財布電卓Tests-Info.plist
+new file mode 100644
+index 0000000..26f9c8b
+--- /dev/null
++++ b/HomemakerCalcTests/お財布電卓Tests-Info.plist
+@@ -0,0 +1,22 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>CFBundleDevelopmentRegion</key>
++	<string>en</string>
++	<key>CFBundleExecutable</key>
++	<string>${EXECUTABLE_NAME}</string>
++	<key>CFBundleIdentifier</key>
++	<string>akira-m..${PRODUCT_NAME:rfc1034identifier}</string>
++	<key>CFBundleInfoDictionaryVersion</key>
++	<string>6.0</string>
++	<key>CFBundlePackageType</key>
++	<string>BNDL</string>
++	<key>CFBundleShortVersionString</key>
++	<string>1.0</string>
++	<key>CFBundleSignature</key>
++	<string>????</string>
++	<key>CFBundleVersion</key>
++	<string>1</string>
++</dict>
++</plist>
+diff --git a/お財布電卓.xcodeproj/project.pbxproj b/お財布電卓.xcodeproj/project.pbxproj
+new file mode 100644
+index 0000000..1b7c74a
+--- /dev/null
++++ b/お財布電卓.xcodeproj/project.pbxproj
+@@ -0,0 +1,469 @@
++// !$*UTF8*$!
++{
++	archiveVersion = 1;
++	classes = {
++	};
++	objectVersion = 46;
++	objects = {
++
++/* Begin PBXBuildFile section */
++		4188650B18F912E0000F1914 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4188650A18F912E0000F1914 /* Foundation.framework */; };
++		4188650D18F912E0000F1914 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4188650C18F912E0000F1914 /* CoreGraphics.framework */; };
++		4188650F18F912E0000F1914 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4188650E18F912E0000F1914 /* UIKit.framework */; };
++		4188651518F912E0000F1914 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4188651318F912E0000F1914 /* InfoPlist.strings */; };
++		4188651718F912E0000F1914 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4188651618F912E0000F1914 /* main.m */; };
++		4188651B18F912E0000F1914 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4188651A18F912E0000F1914 /* AppDelegate.m */; };
++		4188652118F912E0000F1914 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4188652018F912E0000F1914 /* ViewController.m */; };
++		4188652318F912E0000F1914 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4188652218F912E0000F1914 /* Images.xcassets */; };
++		4188652A18F912E0000F1914 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4188652918F912E0000F1914 /* XCTest.framework */; };
++		4188652B18F912E0000F1914 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4188650A18F912E0000F1914 /* Foundation.framework */; };
++		4188652C18F912E0000F1914 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4188650E18F912E0000F1914 /* UIKit.framework */; };
++		4188653418F912E0000F1914 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4188653218F912E0000F1914 /* InfoPlist.strings */; };
++		4188653618F912E0000F1914 /* HomemakerCalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4188653518F912E0000F1914 /* HomemakerCalcTests.m */; };
++		7033E4E9190E334100B91F73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7033E4E8190E334100B91F73 /* Main.storyboard */; };
++/* End PBXBuildFile section */
++
++/* Begin PBXContainerItemProxy section */
++		4188652D18F912E0000F1914 /* PBXContainerItemProxy */ = {
++			isa = PBXContainerItemProxy;
++			containerPortal = 418864FF18F912E0000F1914 /* Project object */;
++			proxyType = 1;
++			remoteGlobalIDString = 4188650618F912E0000F1914;
++			remoteInfo = HomemakerCalc;
++		};
++/* End PBXContainerItemProxy section */
++
++/* Begin PBXFileReference section */
++		4188650718F912E0000F1914 /* お財布電卓.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "お財布電卓.app"; sourceTree = BUILT_PRODUCTS_DIR; };
++		4188650A18F912E0000F1914 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
++		4188650C18F912E0000F1914 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
++		4188650E18F912E0000F1914 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
++		4188651218F912E0000F1914 /* お財布電卓-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "お財布電卓-Info.plist"; sourceTree = "<group>"; };
++		4188651418F912E0000F1914 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
++		4188651618F912E0000F1914 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
++		4188651818F912E0000F1914 /* お財布電卓-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "お財布電卓-Prefix.pch"; sourceTree = "<group>"; };
++		4188651918F912E0000F1914 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
++		4188651A18F912E0000F1914 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
++		4188651F18F912E0000F1914 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
++		4188652018F912E0000F1914 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
++		4188652218F912E0000F1914 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
++		4188652818F912E0000F1914 /* お財布電卓Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "お財布電卓Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
++		4188652918F912E0000F1914 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
++		4188653118F912E0000F1914 /* お財布電卓Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "お財布電卓Tests-Info.plist"; sourceTree = "<group>"; };
++		4188653318F912E0000F1914 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
++		4188653518F912E0000F1914 /* HomemakerCalcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomemakerCalcTests.m; sourceTree = "<group>"; };
++		7033E4E8190E334100B91F73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
++/* End PBXFileReference section */
++
++/* Begin PBXFrameworksBuildPhase section */
++		4188650418F912E0000F1914 /* Frameworks */ = {
++			isa = PBXFrameworksBuildPhase;
++			buildActionMask = 2147483647;
++			files = (
++				4188650D18F912E0000F1914 /* CoreGraphics.framework in Frameworks */,
++				4188650F18F912E0000F1914 /* UIKit.framework in Frameworks */,
++				4188650B18F912E0000F1914 /* Foundation.framework in Frameworks */,
++			);
++			runOnlyForDeploymentPostprocessing = 0;
++		};
++		4188652518F912E0000F1914 /* Frameworks */ = {
++			isa = PBXFrameworksBuildPhase;
++			buildActionMask = 2147483647;
++			files = (
++				4188652A18F912E0000F1914 /* XCTest.framework in Frameworks */,
++				4188652C18F912E0000F1914 /* UIKit.framework in Frameworks */,
++				4188652B18F912E0000F1914 /* Foundation.framework in Frameworks */,
++			);
++			runOnlyForDeploymentPostprocessing = 0;
++		};
++/* End PBXFrameworksBuildPhase section */
++
++/* Begin PBXGroup section */
++		418864FE18F912E0000F1914 = {
++			isa = PBXGroup;
++			children = (
++				4188651018F912E0000F1914 /* HomemakerCalc */,
++				4188652F18F912E0000F1914 /* HomemakerCalcTests */,
++				4188650918F912E0000F1914 /* Frameworks */,
++				4188650818F912E0000F1914 /* Products */,
++			);
++			sourceTree = "<group>";
++		};
++		4188650818F912E0000F1914 /* Products */ = {
++			isa = PBXGroup;
++			children = (
++				4188650718F912E0000F1914 /* お財布電卓.app */,
++				4188652818F912E0000F1914 /* お財布電卓Tests.xctest */,
++			);
++			name = Products;
++			sourceTree = "<group>";
++		};
++		4188650918F912E0000F1914 /* Frameworks */ = {
++			isa = PBXGroup;
++			children = (
++				4188650A18F912E0000F1914 /* Foundation.framework */,
++				4188650C18F912E0000F1914 /* CoreGraphics.framework */,
++				4188650E18F912E0000F1914 /* UIKit.framework */,
++				4188652918F912E0000F1914 /* XCTest.framework */,
++			);
++			name = Frameworks;
++			sourceTree = "<group>";
++		};
++		4188651018F912E0000F1914 /* HomemakerCalc */ = {
++			isa = PBXGroup;
++			children = (
++				4188651918F912E0000F1914 /* AppDelegate.h */,
++				4188651A18F912E0000F1914 /* AppDelegate.m */,
++				4188651F18F912E0000F1914 /* ViewController.h */,
++				4188652018F912E0000F1914 /* ViewController.m */,
++				7033E4E8190E334100B91F73 /* Main.storyboard */,
++				4188652218F912E0000F1914 /* Images.xcassets */,
++				4188651118F912E0000F1914 /* Supporting Files */,
++			);
++			path = HomemakerCalc;
++			sourceTree = "<group>";
++		};
++		4188651118F912E0000F1914 /* Supporting Files */ = {
++			isa = PBXGroup;
++			children = (
++				4188651218F912E0000F1914 /* お財布電卓-Info.plist */,
++				4188651318F912E0000F1914 /* InfoPlist.strings */,
++				4188651618F912E0000F1914 /* main.m */,
++				4188651818F912E0000F1914 /* お財布電卓-Prefix.pch */,
++			);
++			name = "Supporting Files";
++			sourceTree = "<group>";
++		};
++		4188652F18F912E0000F1914 /* HomemakerCalcTests */ = {
++			isa = PBXGroup;
++			children = (
++				4188653518F912E0000F1914 /* HomemakerCalcTests.m */,
++				4188653018F912E0000F1914 /* Supporting Files */,
++			);
++			path = HomemakerCalcTests;
++			sourceTree = "<group>";
++		};
++		4188653018F912E0000F1914 /* Supporting Files */ = {
++			isa = PBXGroup;
++			children = (
++				4188653118F912E0000F1914 /* お財布電卓Tests-Info.plist */,
++				4188653218F912E0000F1914 /* InfoPlist.strings */,
++			);
++			name = "Supporting Files";
++			sourceTree = "<group>";
++		};
++/* End PBXGroup section */
++
++/* Begin PBXNativeTarget section */
++		4188650618F912E0000F1914 /* お財布電卓 */ = {
++			isa = PBXNativeTarget;
++			buildConfigurationList = 4188653918F912E0000F1914 /* Build configuration list for PBXNativeTarget "お財布電卓" */;
++			buildPhases = (
++				4188650318F912E0000F1914 /* Sources */,
++				4188650418F912E0000F1914 /* Frameworks */,
++				4188650518F912E0000F1914 /* Resources */,
++			);
++			buildRules = (
++			);
++			dependencies = (
++			);
++			name = "お財布電卓";
++			productName = HomemakerCalc;
++			productReference = 4188650718F912E0000F1914 /* お財布電卓.app */;
++			productType = "com.apple.product-type.application";
++		};
++		4188652718F912E0000F1914 /* お財布電卓Tests */ = {
++			isa = PBXNativeTarget;
++			buildConfigurationList = 4188653C18F912E0000F1914 /* Build configuration list for PBXNativeTarget "お財布電卓Tests" */;
++			buildPhases = (
++				4188652418F912E0000F1914 /* Sources */,
++				4188652518F912E0000F1914 /* Frameworks */,
++				4188652618F912E0000F1914 /* Resources */,
++			);
++			buildRules = (
++			);
++			dependencies = (
++				4188652E18F912E0000F1914 /* PBXTargetDependency */,
++			);
++			name = "お財布電卓Tests";
++			productName = HomemakerCalcTests;
++			productReference = 4188652818F912E0000F1914 /* お財布電卓Tests.xctest */;
++			productType = "com.apple.product-type.bundle.unit-test";
++		};
++/* End PBXNativeTarget section */
++
++/* Begin PBXProject section */
++		418864FF18F912E0000F1914 /* Project object */ = {
++			isa = PBXProject;
++			attributes = {
++				LastUpgradeCheck = 0510;
++				ORGANIZATIONNAME = "森川 明";
++				TargetAttributes = {
++					4188652718F912E0000F1914 = {
++						TestTargetID = 4188650618F912E0000F1914;
++					};
++				};
++			};
++			buildConfigurationList = 4188650218F912E0000F1914 /* Build configuration list for PBXProject "お財布電卓" */;
++			compatibilityVersion = "Xcode 3.2";
++			developmentRegion = English;
++			hasScannedForEncodings = 0;
++			knownRegions = (
++				en,
++				Base,
++			);
++			mainGroup = 418864FE18F912E0000F1914;
++			productRefGroup = 4188650818F912E0000F1914 /* Products */;
++			projectDirPath = "";
++			projectRoot = "";
++			targets = (
++				4188650618F912E0000F1914 /* お財布電卓 */,
++				4188652718F912E0000F1914 /* お財布電卓Tests */,
++			);
++		};
++/* End PBXProject section */
++
++/* Begin PBXResourcesBuildPhase section */
++		4188650518F912E0000F1914 /* Resources */ = {
++			isa = PBXResourcesBuildPhase;
++			buildActionMask = 2147483647;
++			files = (
++				7033E4E9190E334100B91F73 /* Main.storyboard in Resources */,
++				4188652318F912E0000F1914 /* Images.xcassets in Resources */,
++				4188651518F912E0000F1914 /* InfoPlist.strings in Resources */,
++			);
++			runOnlyForDeploymentPostprocessing = 0;
++		};
++		4188652618F912E0000F1914 /* Resources */ = {
++			isa = PBXResourcesBuildPhase;
++			buildActionMask = 2147483647;
++			files = (
++				4188653418F912E0000F1914 /* InfoPlist.strings in Resources */,
++			);
++			runOnlyForDeploymentPostprocessing = 0;
++		};
++/* End PBXResourcesBuildPhase section */
++
++/* Begin PBXSourcesBuildPhase section */
++		4188650318F912E0000F1914 /* Sources */ = {
++			isa = PBXSourcesBuildPhase;
++			buildActionMask = 2147483647;
++			files = (
++				4188652118F912E0000F1914 /* ViewController.m in Sources */,
++				4188651B18F912E0000F1914 /* AppDelegate.m in Sources */,
++				4188651718F912E0000F1914 /* main.m in Sources */,
++			);
++			runOnlyForDeploymentPostprocessing = 0;
++		};
++		4188652418F912E0000F1914 /* Sources */ = {
++			isa = PBXSourcesBuildPhase;
++			buildActionMask = 2147483647;
++			files = (
++				4188653618F912E0000F1914 /* HomemakerCalcTests.m in Sources */,
++			);
++			runOnlyForDeploymentPostprocessing = 0;
++		};
++/* End PBXSourcesBuildPhase section */
++
++/* Begin PBXTargetDependency section */
++		4188652E18F912E0000F1914 /* PBXTargetDependency */ = {
++			isa = PBXTargetDependency;
++			target = 4188650618F912E0000F1914 /* お財布電卓 */;
++			targetProxy = 4188652D18F912E0000F1914 /* PBXContainerItemProxy */;
++		};
++/* End PBXTargetDependency section */
++
++/* Begin PBXVariantGroup section */
++		4188651318F912E0000F1914 /* InfoPlist.strings */ = {
++			isa = PBXVariantGroup;
++			children = (
++				4188651418F912E0000F1914 /* en */,
++			);
++			name = InfoPlist.strings;
++			sourceTree = "<group>";
++		};
++		4188653218F912E0000F1914 /* InfoPlist.strings */ = {
++			isa = PBXVariantGroup;
++			children = (
++				4188653318F912E0000F1914 /* en */,
++			);
++			name = InfoPlist.strings;
++			sourceTree = "<group>";
++		};
++/* End PBXVariantGroup section */
++
++/* Begin XCBuildConfiguration section */
++		4188653718F912E0000F1914 /* Debug */ = {
++			isa = XCBuildConfiguration;
++			buildSettings = {
++				ALWAYS_SEARCH_USER_PATHS = NO;
++				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
++				CLANG_CXX_LIBRARY = "libc++";
++				CLANG_ENABLE_MODULES = YES;
++				CLANG_ENABLE_OBJC_ARC = YES;
++				CLANG_WARN_BOOL_CONVERSION = YES;
++				CLANG_WARN_CONSTANT_CONVERSION = YES;
++				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
++				CLANG_WARN_EMPTY_BODY = YES;
++				CLANG_WARN_ENUM_CONVERSION = YES;
++				CLANG_WARN_INT_CONVERSION = YES;
++				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
++				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
++				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
++				COPY_PHASE_STRIP = NO;
++				GCC_C_LANGUAGE_STANDARD = gnu99;
++				GCC_DYNAMIC_NO_PIC = NO;
++				GCC_OPTIMIZATION_LEVEL = 0;
++				GCC_PREPROCESSOR_DEFINITIONS = (
++					"DEBUG=1",
++					"$(inherited)",
++				);
++				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
++				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
++				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
++				GCC_WARN_UNDECLARED_SELECTOR = YES;
++				GCC_WARN_UNINITIALIZED_AUTOS = YES;
++				GCC_WARN_UNUSED_FUNCTION = YES;
++				GCC_WARN_UNUSED_VARIABLE = YES;
++				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
++				ONLY_ACTIVE_ARCH = YES;
++				SDKROOT = iphoneos;
++			};
++			name = Debug;
++		};
++		4188653818F912E0000F1914 /* Release */ = {
++			isa = XCBuildConfiguration;
++			buildSettings = {
++				ALWAYS_SEARCH_USER_PATHS = NO;
++				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
++				CLANG_CXX_LIBRARY = "libc++";
++				CLANG_ENABLE_MODULES = YES;
++				CLANG_ENABLE_OBJC_ARC = YES;
++				CLANG_WARN_BOOL_CONVERSION = YES;
++				CLANG_WARN_CONSTANT_CONVERSION = YES;
++				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
++				CLANG_WARN_EMPTY_BODY = YES;
++				CLANG_WARN_ENUM_CONVERSION = YES;
++				CLANG_WARN_INT_CONVERSION = YES;
++				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
++				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
++				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
++				COPY_PHASE_STRIP = YES;
++				ENABLE_NS_ASSERTIONS = NO;
++				GCC_C_LANGUAGE_STANDARD = gnu99;
++				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
++				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
++				GCC_WARN_UNDECLARED_SELECTOR = YES;
++				GCC_WARN_UNINITIALIZED_AUTOS = YES;
++				GCC_WARN_UNUSED_FUNCTION = YES;
++				GCC_WARN_UNUSED_VARIABLE = YES;
++				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
++				SDKROOT = iphoneos;
++				VALIDATE_PRODUCT = YES;
++			};
++			name = Release;
++		};
++		4188653A18F912E0000F1914 /* Debug */ = {
++			isa = XCBuildConfiguration;
++			buildSettings = {
++				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
++				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
++				CODE_SIGN_IDENTITY = "iPhone Developer";
++				GCC_PRECOMPILE_PREFIX_HEADER = YES;
++				GCC_PREFIX_HEADER = "HomemakerCalc/お財布電卓-Prefix.pch";
++				INFOPLIST_FILE = "HomemakerCalc/お財布電卓-Info.plist";
++				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
++				PRODUCT_NAME = "お財布電卓";
++				WRAPPER_EXTENSION = app;
++			};
++			name = Debug;
++		};
++		4188653B18F912E0000F1914 /* Release */ = {
++			isa = XCBuildConfiguration;
++			buildSettings = {
++				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
++				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
++				CODE_SIGN_IDENTITY = "iPhone Developer";
++				GCC_PRECOMPILE_PREFIX_HEADER = YES;
++				GCC_PREFIX_HEADER = "HomemakerCalc/お財布電卓-Prefix.pch";
++				INFOPLIST_FILE = "HomemakerCalc/お財布電卓-Info.plist";
++				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
++				PRODUCT_NAME = "お財布電卓";
++				WRAPPER_EXTENSION = app;
++			};
++			name = Release;
++		};
++		4188653D18F912E0000F1914 /* Debug */ = {
++			isa = XCBuildConfiguration;
++			buildSettings = {
++				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HomemakerCalc.app/HomemakerCalc";
++				FRAMEWORK_SEARCH_PATHS = (
++					"$(SDKROOT)/Developer/Library/Frameworks",
++					"$(inherited)",
++					"$(DEVELOPER_FRAMEWORKS_DIR)",
++				);
++				GCC_PRECOMPILE_PREFIX_HEADER = YES;
++				GCC_PREFIX_HEADER = "HomemakerCalc/HomemakerCalc-Prefix.pch";
++				GCC_PREPROCESSOR_DEFINITIONS = (
++					"DEBUG=1",
++					"$(inherited)",
++				);
++				INFOPLIST_FILE = "HomemakerCalcTests/お財布電卓Tests-Info.plist";
++				PRODUCT_NAME = "お財布電卓Tests";
++				TEST_HOST = "$(BUNDLE_LOADER)";
++				WRAPPER_EXTENSION = xctest;
++			};
++			name = Debug;
++		};
++		4188653E18F912E0000F1914 /* Release */ = {
++			isa = XCBuildConfiguration;
++			buildSettings = {
++				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HomemakerCalc.app/HomemakerCalc";
++				FRAMEWORK_SEARCH_PATHS = (
++					"$(SDKROOT)/Developer/Library/Frameworks",
++					"$(inherited)",
++					"$(DEVELOPER_FRAMEWORKS_DIR)",
++				);
++				GCC_PRECOMPILE_PREFIX_HEADER = YES;
++				GCC_PREFIX_HEADER = "HomemakerCalc/HomemakerCalc-Prefix.pch";
++				INFOPLIST_FILE = "HomemakerCalcTests/お財布電卓Tests-Info.plist";
++				PRODUCT_NAME = "お財布電卓Tests";
++				TEST_HOST = "$(BUNDLE_LOADER)";
++				WRAPPER_EXTENSION = xctest;
++			};
++			name = Release;
++		};
++/* End XCBuildConfiguration section */
++
++/* Begin XCConfigurationList section */
++		4188650218F912E0000F1914 /* Build configuration list for PBXProject "お財布電卓" */ = {
++			isa = XCConfigurationList;
++			buildConfigurations = (
++				4188653718F912E0000F1914 /* Debug */,
++				4188653818F912E0000F1914 /* Release */,
++			);
++			defaultConfigurationIsVisible = 0;
++			defaultConfigurationName = Release;
++		};
++		4188653918F912E0000F1914 /* Build configuration list for PBXNativeTarget "お財布電卓" */ = {
++			isa = XCConfigurationList;
++			buildConfigurations = (
++				4188653A18F912E0000F1914 /* Debug */,
++				4188653B18F912E0000F1914 /* Release */,
++			);
++			defaultConfigurationIsVisible = 0;
++			defaultConfigurationName = Release;
++		};
++		4188653C18F912E0000F1914 /* Build configuration list for PBXNativeTarget "お財布電卓Tests" */ = {
++			isa = XCConfigurationList;
++			buildConfigurations = (
++				4188653D18F912E0000F1914 /* Debug */,
++				4188653E18F912E0000F1914 /* Release */,
++			);
++			defaultConfigurationIsVisible = 0;
++			defaultConfigurationName = Release;
++		};
++/* End XCConfigurationList section */
++	};
++	rootObject = 418864FF18F912E0000F1914 /* Project object */;
++}
+diff --git a/お財布電卓.xcodeproj/project.xcworkspace/contents.xcworkspacedata b/お財布電卓.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+new file mode 100644
+index 0000000..c75ade5
+--- /dev/null
++++ b/お財布電卓.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Workspace
++   version = "1.0">
++   <FileRef
++      location = "self:&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.xcodeproj">
++   </FileRef>
++</Workspace>
+diff --git a/お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/chefalice.xcuserdatad/UserInterfaceState.xcuserstate b/お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/chefalice.xcuserdatad/UserInterfaceState.xcuserstate
+new file mode 100644
+index 0000000000000000000000000000000000000000..e3483eff048ceb5e40d4afad8e7208656479cfef
+GIT binary patch
+literal 32061
+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
+X>D=@Ik`I(5rBB%n(x>bH>E8bb8<QKV
+
+literal 0
+HcmV?d00001
+
+diff --git a/お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/chefalice.xcuserdatad/WorkspaceSettings.xcsettings b/お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/chefalice.xcuserdatad/WorkspaceSettings.xcsettings
+new file mode 100644
+index 0000000..659c876
+--- /dev/null
++++ b/お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/chefalice.xcuserdatad/WorkspaceSettings.xcsettings
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>HasAskedToTakeAutomaticSnapshotBeforeSignificantChanges</key>
++	<true/>
++	<key>SnapshotAutomaticallyBeforeSignificantChanges</key>
++	<true/>
++</dict>
++</plist>
+diff --git a/お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/morikawaakira.xcuserdatad/UserInterfaceState.xcuserstate b/お財布電卓.xcodeproj/project.xcworkspace/xcuserdata/morikawaakira.xcuserdatad/UserInterfaceState.xcuserstate
+new file mode 100644
+index 0000000000000000000000000000000000000000..eb03a91e56c0f029971c9541f5c147a244c5064e
+GIT binary patch
+literal 19437
+zcmdUXd0bT07x=wz8Fm~P7(hW`81~s$U;x=%a940&aDWj;fx%f^GWEVpORe0^uUQGW
+zFKJeqWm%T3nrr*!x3VnDRxP*uoi~pG#;9+9{Ob4l(Z`v2@7;Uux#yn!oL5y-z1`*3
+zXwD*xC`2O$u}CB;5tWXS&#*aNc1PnFxua^Tt=jDxE4MnU>+Ep5Lhg1nMIyXt<DLlo
+z4hlelNP?nJG*TiJQX>u0A|28r12Q5LGNWu%iu$0ws2}Q&hM)>G5=}sL$d0C>X{a7K
+zkqga21aastv;f_W?m^4Ya<l@iLF>?e(8Fjm+Jd&CJ!mg_9PL9-pr_F@=y~)qdJVmf
+z-bL@B_t6LFL-Y~)6rDp~qOZ^e^c%X0uA%Gb2D*uUN4GG-3=YIWI1Gp5o>+#HaT-p?
+z3arFhtivX3#ul81`{Ob^01w22@L)Uy55>dq1UwN>!j*U$uEz~{HogPT!FS?&@nXCL
+zFU9xa`|$&K8GZ<Fzz^d`@Fu(sZ^sAmGx%A22tS9P$A|F?_$B-*K91kQr|{eOJ^T?q
+zhcDo-@i+J){ucj)f5yMy-|;O9QJ4y(A}I+KMMYCmDu#-sWK=RGr&1_2rJ=Nxk;<XU
+zr~%YKY7jM;8bS@F%BfM*Xle{KmYPV}sRpW%a#Aj8CN+z?lOhyHEu<DvOQ@yPqtr&K
+znQEb0sZG>oY74cM+D7f7j!-XAFH=XUSEyI1*QnR2H>fwMW7L<_SJVaSYw8>7BK0lx
+z9d(KNp8A3Mk@}VTjk-y*w1^I%1L+_-f{vsmbR6BCPNb9QELuS;X%(%bOX)szU%DUN
+zpDv>Z&;#i~^cZ?9J&qnv+vq8DJ>5i4r#<v6dJcUjO=yl@NH3<B&`arM^eTEay@B3B
+z@1pn7Pti})&(eqJ7wDt(>-2H@6#Xv!G5r;Nk-ka)&IB?+OfVy6q)Z&sok?I4nIuNW
+zq%vttI-_8ejFB-hW~Mh&$P8eHFq0W8)4((`4yK8j!OUSe<}PLdvzS@JEM=B4%b69-
+z8fGoCk=exTXO1v0F)uSmnKzkJ%vt7L<^$$K=2PYz^IzsX^ELAgbA|bp`Hi{CTw_IS
+z02{~#vB9jEjb;<ro@_5RjZJ4WST(C*4Qwvko9)N;XUo{(><D%;Yh|n0YPN>8u`}6O
+z>}>W9b`E<dJC~iua_kCrCA*4U&8}hBvJbKkvyZTw*v;&2_Az!pdw_kKeV%=peS<y8
+zzQcaNe!-q+zhu8+FR)*;w?s&UMU;pZF(OtZ5(S6?MM0uaQ8!VfC|VRN>M4?o6e6Wa
+zB{GT3qHIy2s7O>iQr_sPuRnu=P%sKXp{N^*96h95HO)5LH4eVpBz=^;y58z?wV*H*
+zPAEdRATf#{40(&BR*Iv_O8bm<IH$Rqtkt$sN42NH*66Mj%k>6RPEo1Ztkmc<Mx{Zg
+zHz<pWj3#BD(jsGtF~^|Mn)~_|mZBu2*nwhDEQ&+jQ4bW45>QXn3ndbkh)4hlBtayY
+zgpg1YM#6U>8A?WSl!8)G8cIhQC=+FpZbVE<$XfCcd4wD$FAzKYmj&n*J8jl!O%8jb
+z+f`KUw$HG-Z8eqR?xnUVR!_aVPmSH}aF)B_uB)%ZIda4xSEV?n)K=xGt+hASj<z?}
+zIA#{x>Z~*D4ktkKg0PM7G?v<2ZhNEE4H|KRaI?I+&emY76l(@qUG5S`LsPvCmKw%u
+zO_v*JB0Mj)x@<Mx33m7F5w<3W6NuH#M>k<TKp}R7ts3SC==q+uVOP}D)EDUNDr+2U
+zZ?w1L3fTEwmpB?-j(S^=kH|Tw04X-1Tx3CcD4#@-NFpIon^135h>B1#i6%K@B)N+x
+znt4pMqsFH4e(Hxg9lX9T_cZays{B#%A5$srE6fC*7-)B^N*vV=YlXv8U02rVw$(bl
+z<hmU~$DndJirG~Ts}l|=)eq2Zi<Ub)&T3l;;8-b6|EqyTE|<++Vs%^V9ko6>l%au0
+z(ToNVX)_u`;z-sRG!&SB7#fa7pmLu5tKf{r!?)8`4;as|5kz81Or_X5#a?gARjbt_
+zU2v-E28Yu=%{tR+oo07h)xJY=sqMq+9F4XVodyo7-d^q9w7S2e!Pa1%W^<NU>#O~*
+zRI_+$HvyT|r_m@h8jV3?#|a|WXl<~K5q{cSBZrg&2ehDZXuR-q%#iY-UR&(j+C)^v
+zAMqqqi6$c}=}vl(c#^OQRiheYLsLjkq996=%^$HqHs9e2^i{dMbR7izs&WD9?iqI5
+z%u2DsOJV<^!<;sd2#>46>a4Z3v1tjfB)T46ZmS0tveo#AG{_;41%}JJfL<xwD{GwM
+z5HRy?umL&vvuh;1no$!;<TnygI;x_aM|Kn-TjsVkxK4YOnH$Y)K^`=NB#|_d=>squ
+z-H9Sw&>d(Fk&)yUG#AYya*{$)CjywV8W1`A6uS*1T@2Se#KG3uM!Va?b6QdddHfda
+zn3h~<D@6RCaE=Snq6tIFOYNX`9F11z>=v{TjrU=4FIwt{$$jX4l1?&6>agU(x#v1T
+zS&3Fn8d5&k<F;1S+lrh{>+Dvv60Jt#fmOYi!eVRDgOy@Q`@oJ>ThUs6UD(p?R22xd
+z9&Knw4-pkHpGA+LN6|(QhGx`)TG6JlF7LSk_G8`l2GDrchNkf~Z8{!!k!XpAsEO&{
+z5RK%br>`o<g>>)kBj7f)6DeBIcC>@&h`t5wLc5897)jPBfoDbuyxGORC;ADaK)xr@
+zQ<dTbKVH0@SzFP5bbu%1Uk`&*0N%NMvarf(bg+d#I^Q0iMTd}L<3?Tw2`2b3dXZ=F
+z7f5b1IzsaNmD8(UMP#WIPyc5Wk(xJ7s(P;`8f>*Us$A^~*@xd7=p<5XMsK2H=s0={
+zogn$7fb=GXq-Zlb1vdEvI*Z;W#bAkxNGa*Z3uv5A_y^k>s%*{<X#wH4@V0W45Lkfu
+z<!y}9=5m4ME%LY>_14)Ak9%Yj7>*hnn4yLyHw^Mo7DQiw4D1OHXV`0axlJxB?l2?e
+zZl|Z(?Qz<8Nd|l9b~@_o`BBoc;u34)46DokfglhcqYWF0S&V#p{xABRKa<Z$pJwz0
+z>FeDSkN3bv$IQl|9(TRH(YwHCdyTs;xv)tPUf=Am(GN(m1$~1qqHoc6=o0##^e1Ix
+z02xRIk-=NgkLV}#Gx`NxMpwuXGL#G>!$~=*AX($aIUEgrt<`V_<4Zs>*_^|8F9tMb
+z8zD<89PMZbyBX$i*?C<v*xCeM3@-+@nhHnLAlnREy>Ak)as{hV_CEkfdFVqSzMBEm
+z>p&*C_YYp}geJ`~Xmu*1B2lN;sEl*lHjFW*1fKR%6SJURu!xKx=5aH|j8oRnQr69=
+z_Kgk3A;Q??-U8KpM91B*6v&3fI08pv368?iWE2@g#*qnR5}CXO$KY5Thr8n*IG$9I
+zX~aRCWCoe%Conk4D=?!g#Wnwsz<`A>1r=Ef?xU)qlOKUoy(^Ec6tDHI+{qbmsl9qe
+zWo>Fw^IQps>r$8UhvaCoIn~3!>zLwjHuyY=a(jaZZaJK)rnV=Y2A7u({KGi2N~3bs
+zOjCPYPPM(Ux*n{T8eI8mwa;Hr)pf=-%Zn@MwSR+3ek*IdD^IKx*ZQdRf7i28`-`{#
+zwvFD!EC02{{rDr-ySTMdJn<jec>}M%VM(u9!TGot979}yd*eb}M5;**v5_g8a0xC&
+znYb^hC3O%kP32Wv>@cUj0h|?|nyv5|e$X4YJsM?q*}*3%sk1skP1&3ytc|s{iTyzl
+z7uDC7xm+F_D4UeqCi$#^|193RE9P7ZlaHOFQ6y^h**S9qNAW*3?RsT69@XU@M&mKC
+zhjFByG{7DjNfr-FU2s@+Zo(X`PNM~I8m(dOxH(#*E(b15?GPtpTbB^0;94(Ln#gp4
+zDqig7HL$0~@F?lb`gRbF*wrNnH}(LCnZ!lh0Ky|6rCYLi=2kBVQ;uowm^mh`x$_3+
+z;=6cQ^YDC3Fh^#RS!6c3V-sG0?*>?l$Q*Jfz?%F2@{kTv<EpMKTnDr?=@g0PY(4BE
+zTWjdNi{*Gtm%CVtAB0`}hs-AgcERx!IY^Cd+`EVKQbe!kVZmo-SdZdnu)KI9S<sAI
+z$U=YRzSS#2cmH$pTh?H$wYeZVgRsU18rmmJJMiPYY1)Z*;obN#ya(?ki^x6XUb2`h
+zAxpR5efSCdBz_9-#|OxL<bJY@tRkz)8vfkGH8!`^Uf<aji4lBkTMZw(_&G;nA>L5(
+z8Cj(j(ir1~8{QyiqN^HWOK_CDPbNCr%(V9kJk+w{vXZvA*Jr^y78MNhi}=V!@_^Sb
+z#V_Nd5UI4q809v1E8Ka-8)m|VZ{M%sH~7<doh)z0Z;}=Ke!AIaHCY>L+K?|5LN9y*
+zpWH}R3Xo6ZGZ3r-loou}2T)l59q;-+;P2xP{5)a&G5*B=#((h_;P2zl@aN<~vaSW6
+z$6u2Fko7zo5s+^H`)RMX`2x#Iadi8=B0f#+hWHa4!AkMAni=jI?^vb1i4W9WKJ%KZ
+z{`YOPvOQTa!p7&5AZw6rP=e8}%c!vHvrRtoe22g1X@7};GxY;`m}E_a?G1tK0Jylo
+z1pX0?Z_;Ia6)9Tr75ppyjXX*=lIB)?4PVDMNDFz6JkL{317Q5KQEizk@FL4S4ZI-`
+zRw%dC@`*iA=&^s8GPH?zI^mJ@505JB?s}W|yeSIJ+(gk7L$Q>Iw2~d<G4e!vU`_>5
+zVSp<YOodRPWE0s;wzN{=R5waYwvugRJCAGXAE5i826hG#GVa-x;;g?OSZuAHR&Hwo
+zqXj-yr8wiSM+<9=vetWS$%TUBi-sqTEcV#zYuX4+#Zd`=K)xr{i%KLr$u6=RbX}oX
+zm^vaivCFffQmM>8fXJd0l#=Wrd&%Pf!sm8Zqr?;nC7z~qD1_2e20mj|11YYd5maTB
+zuY7|knqftjyuVkr*&PtrP29alygVgKYcRJZg@b}aLc_u#$J9mvAq@p;qR0(ASLK0>
+zDI|kK2|c#lQ(bMdffhIu5g9Cz#&wZGZi$K}3}IVhVj-U!L_$UlDenuOFN`d4)H|GK
+z6MFUvPE3*|!~Jsm9X42XO5b{GtqZPsE>A8@73dccCg#(@kn2<p@>JVvto@w4{ux=O
+zEOyk_oK8(k&*&<3*0x+rdS*w?OrZ=`sWpJXXkI(OzPy-}^J(m24HDBN7{KZDJ``JY
+znQ(11`Db*D{LSo~N^xW-y3`01Yst;*@;<1|A>{*Yvmp=MRzN$IUr^z6INSt7=_~>=
+z;K@)r(?O}M59BIGpz)B_bD-%^81ta{Xc2k<3Sk={SF;gvG@GFqwjGLLPebD1H3-4q
+zL;pozK;i2G6uKCQqGE9`C~;*$VJjE+gM!u|C}x%8@leRB#!c9TXF=I&Io^y9K%wfe
+zKw}CE-;f#h`@=7ieO{$bnJDwbc5_h*yw?i1ve9@TGk@h1i(IM*3?;~P9+gjpQoX4{
+zknAVPQ)CO-PY!IMim4K+l<EVYCFE&xkUT>U!RJ9<)@6S!lohj^K$ZWGL4XPjO8aX_
+z{Gf98?E3#bl6Qo?Ba;gQ1-gjwX=)e<;c#jM&+>eVjCX3rDXJS^A<qh=s-Q*+RI#;C
+z6=?jV3P+7~cB0h{erT@NDE`J@8wi?m9Gck-l@^+03fGg+%<VXenvA2VDyo{Qp={I?
+zsutql7s+Ju5;;m<C9jb;$T41<wx_bGdar+U<o`{!r~{4ZUNm0*=iIcvi1DZy-o;<}
+z{~-)VtzKNg%j}@teDAH-|NY3Ey4$<*oBz(rog-svv3KR;{~W*kiCa(IM?v7Sjk=$D
+zfLcZ^r&drasa4c!a)O*Br^sn?hMXmDlXtdJYbgk1P&l=oS^<T~O!6*y4+0vRybnXV
+z!LO`IpmBskUSB8JE+`zpjiF9RPugnQE2S0Ist$)7T&KA9No9?Fp(g99cG_%>gS{m#
+z1^>)fVih2F%pKWipYE}B1P+zrg3iPJ)~PHmEz$PT81+hRQFf8ikZtIrEXp<%DRWB9
+zhMXd^UZ*n{D#g73fY&LswXf<ArW3Xm4o7{J)ma9aRBtjs@DBwfVN$W*Bk7zu5RPY?
+z=PDBCX!RzDrA@}{xpM_Aw;d9N)CwS?*=Ij?QwNY@JM|c~huTX$PVJ+fpq`|jqV|&y
+z$cN-3@-g{@d`ixd|B}zPQ%@rq^$hhab%=TnejP?~@;RKw7aYEq!^=4Q2I<D(w;?T^
+zH6Atxhz+t<+3F!6gRAm7$IKy6;Ds!n!^!*ALj9l!BCblY60W<Z!brCrs!p@{VeRE0
+z0bn~Y0fgW2`4JL|$oAUCE+FtI3GnSU7tc>HtuGWGhgscq;ATTv6JkQEuRiP=<V}>r
+z;<xESU;c+WPQ8y5JE^y*6VyrS6m^<9L!G7Grrx36rQRdw$(Q6Sa)EqJz9ARMx8yr=
+ziG074`hfb7`Up5&j^xxi>c7-y)aStMKalGjP6pDJkP;4SINX=RE)L(rGd^F8^H$Dn
+z&Q28Jg93q~UT%h3dt(ihc*hCZ{R&`np62|Hg;C(!wN(U!>vB(31Bk)6PB6T|U8n1|
+z@i5bWt$wyfy9b0z0=L@={$2!yb4hHw)ls5{dOVaLAk6XBY+<69N6WV-ewL3lf1-YY
+zc#Qg){MbxgCO-*#@3Ig{U4=p<b&a}CekQ+l#5=#!7|MUtEgF$u$mJHAqG@u4{Q5Tv
+zkz?EUm|Qr2xz`hE!-@{3!~B4T)7{8ba*c1(=;kE>-_~Gr@*7Dm94k06zPV8}B;1?n
+zXmX>Ojv+Vs9i<2)ZsV>$Ba;t64;q4?W;&ky-c0u-w@6k6UqkXemC>mvvXxGz<#Y;%
+z5r;8{sa84-$>|IZ(>yaJ@pxwVt?6ydC<obWto8nEuWEu=K#1=@wynl|`~7}4D80L#
+zv%Ok|R)dzIfo+*~HACxZ3sP*Q4YZLq(PlcE&Y^QT%yL-7;Q$T?ayW>?!5j|RO6Sq}
+zbOGI)E~Ja-Vh)FLIE=#)9PY{CXb$({FqEVx@Pf*_!Mu|?UO>@{Jg7#&;pYpv{;UR)
+zBPb1c!l!rmm<McvF9+MjvmU-@eP%)ZfN#v}FahIz&!9vLP?|hdkSc0x=7DwwWwlaB
+zB>B!}Fg*fA{xR`Lm(vv}lODz4a1MiI<FJ^ddL7)VD?iqDl>>a6o<L7TA@n4=lAcUk
+z=_<M!$w7*I`1rCjlR9t}G#ZTH6V@HKd4mXX-K?Qgd~-XVakx8&B^*xRa3m?I6t`7V
+zfWiIfB!E=4D{lzOgkqq;2(@TKD_uw1>8Tu!;&2RyV~P1R-2mtp(vESRmxH5~cA;Fo
+z4nFOqffM6l@s6_<!apzm!>o2^3+?8s#(z1+yD+{%JIM2}n1IG?+QH#Cxb%+^&OqE3
+zf*z&k((}-84)@@o0*3xMcj<PMBJBDudO_E9?iTuPezSjC0;d<z_dxf_?T6JtJb%Gx
+zq3`9v{q6DNmBpUf#U8iY(U|+Un}|BO-1J=D{RFBCOtPHU7ArU`BW5rzbA*BfI4{`-
+z-gnU$=gvJ#uc6n{4+7V$L&NFy^g|Hx^P#+;G<oYb#OuSw)Ou}^pbmKN%{I#|Jc(@*
+z3NC+m#9;-r!D2aw)$h;`(~rO!kJ20IW>{w(y@?t^Z$_Vvfz)PwjnmdR3i4TCxW-ot
+z^+X{+PONF`)%Y{=j)#ny&)o5ADLAa+a7t%6-b!y1<e0-*98UF#oj{-6ybwJ`@1gf{
+zIE};U9M0$@L|&yRF!OD!eUNAE%)iIletV~1gxzm~=HB7xQw}S6oK*zcZJ>RTeuY1*
+z^*}H{f$yWD-=HCY;p6{y9pLAE`5#dWeT?U{zdKx5;Vt?E-*WK3S7@P6^3eazP@h&l
+zO`mNy$ZvC4+ukHXzehu^yv@>n$YEW_lTYZ+y0WsLgOxqcVLfkUOG&Cgt_wW5zUHu@
+z!xDZ=gIDwSEa7GP3jHhn8-10&Mos3hk;5hq=WrOTVjhP}AT<FFgt6Muz*o8JZ7RM2
+z&^d+At?`Ldn^WJZIZ)Nnv7s7MR_r6dEry28fS)iQ&m(t0HEd=p?#r-@h=9sAb2yu%
+z3e`fb!8n(<OQR>HeECTy-ep3VP@Z=g@coN83`U(d85}P35`c*S=4B!o2?Ofi!r^=l
+z7x<X>D$k#=4^aEvZtH~ULQ^w6`Qg3)z|NBSw}ihol}*+2Dw`Z>)7aA6ASb5t{Wlqv
+zVw2Dw0BprKQ3`s&X9iW}?Y)o6DbNz5?4X^ns|+|+21KjRpQ@}j`Z6j;3k4NMO@n>w
+zM{cw*I!4do{v0lY@`Bfa_w|#=_)MU0S~dgjQVWwq$8&f9`Mrh7V}Nu6IXszUjV-E&
+zV}`a^n{RXx)29oLWcngG11k;UIdW1PM=}E;@5Kz_@ZfegnHkEA{+k@hjA6zy<CyWx
+z1iFZ-;_wg-59M$<hbM4&BKT&IC<Bh{*5(XVE9-2~ROIxbS;f?L<pMEvj2&e%(>Oeg
+z!^3$OXoTPbja{=z`J=aRY1U|<aA`D}_`+pp=9|tq=_=4upufj+xB{3DOiPJyNHfuf
+z7G@SRo5LeHJf>X$nLC+zAlb}Z4v%VP=5u&7kF&JF+UT*?|ItOtoF)V~BWx~cWp+U-
+zys6G>Q$|>4g6lWTW%JZHglWEg-pwrH7g)&QvCYgq9F)zo#@RcyJ<9x8PXG^fL|ZL%
+z=BfsJ@$fP8bT2c%+{Vmth0vQMNO+>Z%kW3fsZJomO8&T4ak!E|p1hNBHE5wsZ-Cme
+zugcCm$UM{)6Kwz{dW6GPo{6UWn5dcO{}v8cbx?IPv-@u{5uL~EVfHeQ^A0}qq}Rc(
+z=5Q^CLB2ssz`<{7SGLRn=1`YB^BnU$@XQMwuHmqa=b0((Jd^amxH&o_Y|mumxh6*g
+zRdj!@d4+k^XKoufT<2$QnPa@hI?lYsoZv9P1vNO$r?J3i{Zn(xyvIMR|AT&NJ4xmv
+z!INzKmp#c!anC|K-zLu&7QGSoZJg7|FJnFu{IW)Yb-v^e`6~`PyHav~taFip_Pb5Y
+zx6F6UCFXk$yE*LP@C**m+{FCI{6v*7zi@aKhv$-m9EJ{qF@tPVysgAS1-U(s(VjOL
+zC%6rKE@SKndu^R}uur_Mvxr~q26L17ow>zf5b!%VJcq+~Zi1Yl9O^SNNR*U7gJd^e
+zvU`lOI_-Qk=<P$~a}6#KU2m-sf{O0`Pus%V@@i-js}v{tJ>(^>9J=!%p;Ya(H$ff?
+z=1cvCc%k!dVH>V&2n!Wgp_iHs=fK2fd1=c=K)!;FWFf!;1$0-tDrTi@T<7Eh+nw#f
+zVZuSDN@_dNk_+!B^rjVjizKqiev{;E3WpbP_-?S>?bL%=8oybYtO8JD!QWie44FL0
+z+ChK}PBZ^L14P%LXL$1a*3hy#zfJ+x$eP=Cmd)YCzMWb4o#nA$t(I{3{*Ij$vL${<
+zma=^~yp+TDd7H6k`0r={JNUN2L%o9^03k1QB>L^6oE;0@vTOxAk{!j4X2)=NIfo&f
+zSjl0~d#g9I<Jj@+1a=}jiNk9+47v<-4)EbK{Dy@tV^y0M(4JFNmCtUdazN@b(N9%(
+zdhUyJA>{m%Azo$%lKOhF+9&_{szN)LkK|L>M$o8iEnCOh*{SR_ww?uTwU)yVa(Eqw
+z|HEPM!yn@ChOMlFPm;sG`*`N(@Wa6QcKDa>lL0;h+ow|(2{107e-?Jxju_9q{h=}6
+z3KdhR@XNa%!N*mQMu2|ep^f!0j8D9G0m%EJf~{>#_fBIP_yjBOzz7k1*8qHS=sgC&
+zmiOtqSfoAX;877IYd)H}v4iXGVi!YolwH8y%`RjYvG=g|a`;gWZ{%<@hrxiga(L4g
+zb_u(by$@xw4<PXAHgkA4hacl@%08eXFo`$e*_nEL#K|X&+tTsy8WI0~5szXU-uwVz
+zW5O#&KF3m!D@e5UY2-B$yn@5$t=kX4?}&<R(4X2Si7-O|$>%r9O9u0)E|2SWXg<bS
+z$F4__%`7m;mSz?hWUDVXDJZ=n7Z1xf_)(T`|6+k6+nQOR$ae5c{aW{Z1Gli-`PQHt
+z>^44qvZICF!EWR5PWVZ(hWQ5VVfVoxb}#>Emv_`Q{^t(wC~#8RUT}i_B=Q+NIN44<
+ziPvZwO}ciUggwYU+p&{F9Nt4xeJdSiU+lp92nYRPzW#ppDElfrf)1SLo7vYm41FEG
+zNpG^p;R#&`R=nAZSI47M?3s?G&T{yPj-}pZ-}BdfAF`i99|`*r`!V|oho9o`ehwdK
+zWzX^Ehr>^Mtq<@G-^2qaRXvSw_wlyeI~u)5!1s>9BM>*9Z@p2Q_f5B2Z_a{mKaVOc
+z?pIL<Ddd`=&fy-L$HwboG4(&Rjc=RZun=NyXD_nfvfr_n*zegN*dN)S*q=H4EQf)N
+z&v6)z@Gys8;P8ta2I{@E9oYX0`z!k!d|zX)!{<$20>JY;%Hdb|pRaQGHU9f`UL^Rf
+z^>I2K&f9tL4`RW$jX~2#y|oG6$!j}v{$4w;ds|rfX<p-5JX^@B@SSBoX%ggvx8R^o
+zJA>ng!acsMC&=0D*g&4B^Z0&Fho`A4o-=6L3S^?-wuU{(b%??`{T6%GidV&mB%SU{
+zy}#QCFNzcO0RHm6IwgY0?ael$DC&h~wu%x(Ng^4Ck8$_}hflZbC{c<iy|b|sWr#ov
+z9p|w3%}-u)x9bO?rqJYPD@AIN&TqP2WZ>{g4xfTD2TT?sTVduB|Cu?WJinRwq5=+|
+z;qX~rU+@dJSI7Jot`txDTQBD&cIx!=e;Mz#EB{bN)d0Hm_TC*)A5q_t-UPq5eJ2iV
+zT^79Qo{M_Z-_w^F3f@kRX5!(k<YXp=$%J>3Rg8w|2k#)yf%lD9GOOWz<8{n>W&`sG
+zym#CJZyq0Ho@Jh64l^&p`^QI_SDDx04dmm@3Fb?dhIfk%Y!T}Qd(q53%bsS>u;<|2
+z--{qi--8@oV{fp(!+XFKyaQYyx<|BE^r7g2=%VO5(GQ}ZM85>!fS`crfS7=|fF1$!
+z1MUr26|f<oC17j7?tuLPF9jS6cq`y!!0CXq0Url^8t~tM&jZc}d=(fOSQOY4_+a3s
+zz^#GX19t^J7PvR?<-p^CrvuLhz7zOf;Q7FB0>2Hs6!>%C<-lJ9uLcDKbq^{C>K8OD
+zXkt)RkR!+)G$UwM(A=Q;L0r&+pu2<a4_X_vIcQhVlR?h~oeBCN=)0gRL05yW2i*(~
+z4~`9%1*?KJ!Mb2Wuqk+baBJ}1;HQEQ1Ro53KKO;;Bf&2RzZrZw_<Zos!8bzULy|*E
+zLdJ$vh17<)Lp&ifLS}_547oRCNyz;n%R*L!JQA`oq$OliXl!Uos3uewY6vxjW{2j6
+z_6hA5S{6Dmba3d<(BYvCp*uqlhn^4pJuDzBFf2GMG%PMGKCEY0Qdn|WN?1|YfUwbF
+zHDOc2>cXam)rU2PHHFO$n;*u7EeKl}c2C&iu%%&Z!&<^#5BoekI6OIA5pD_ZA6^zd
+zAbe2x$nY`Y<H9F|*M_^pJ>fILXN7a&4}?Dy{&4uC;mzT#;hV#^hCdm;Km6(NXTlGK
+zKOg==_>u4v;itmSgumS_uUlESf!zjo8`|wcx69pr?RK@>b#ay0A)YRFi9O;^#ovlA
+ziGL9P6fq&f9x*MVA;J-HBI2Wn^ATS~d>wHy;=70|5x+%Ti?|W-dnAhN5m_8LEOJ&P
+z7r8X@zQ|RP8zZ+z?u^_WxhL}R$Y&xCMLr+-LgbOimm`lyeh_&+@~6n_kvAi6Nw9>L
+zgi69CVo9VVN+Ol?lB7$Fk^)Jgq*zia=_?s387?W8jFgO)jFnVLrb*lqPO?ODpX33_
+za>+``Lz0Ijk4l;)t&+`>7bIUvE=MIqrABF^a-;f14T~BPRS`8RYD|<hsyfORRU2iG
+znil1bnj5t!YE{(QsC7{fMLit#Xw<H#$D;N|?Te0&&WJWeXGiBo=S3Gp7e*IH4~-rk
+zT^>C$dUW*I=<(4Lqno0aL_Zw8J^DcO(dhHhm!iLq{xSNRG(Z|Ijglrw<<eAXhBQm6
+zl=hbPmzGHfN-Lz}q?J;ev{CAiPM6M;&X*GDUD9RJ<<b?>Rnm>p&C;#X?b64jd!_rN
+zPfA~to{L!;vpnYEn2j+lF`Hwy#%zx{5OXx<bj<rPAI5wf^J&bNF&ARKiTO6>QfyLe
+zUhK%&NwKxD_Sk8$4Y7{c>9O--7slQbyEt}f?8?~Hv1?=3#jcNiDfY*>gt*kW^f*<V
+zC9XKGG_G%4|G1%X!{f^1M#hbfn;cgiH$84%+`_nf;ugm(jawPFI&N*;y14amt#Lcz
+zo``!kzGr-5d`7%Ez97C&{D}C<cx!xhye+;q-X1?KepdV)@ps10izo4S#oryjD1K-B
+z$@pst@&sjqIw3ouFrh4AU_wR0_=L#`j)dt6^Aqk(SekHu!m@;Q2|E*ZC+tahJmHCi
+zrxFe%987pN;kksv3C9xNN;sKtx@X^><vmCC9Nlwl&zE|h?0LH9*`Dw8a`d{h*Sub&
+z*Im7q^;*$uRj)O@ZX^aJh9rh1c1xU*xFB(1;ysCr6Ms%ZNfAksr0ArWq`0IWNeM~4
+zl9G~iNrog-Qg%{qQeIL)QejeYQfX3o(#)h)Nk?R~EJao%n;`SZ=E*qO0@*^@O4(-F
+zR@rvhPT6kR9@*ovCuC2_4#?h+9h1E!J1ILOdq?)Z>_gcnvU9S}WS5e0a<}B($s>}v
+z<kiWo$%m3pB!86rbMocnUz4vUUr)Z7d`phyw49X($b;mGa+zE%Pm^cJv*b#-My{8e
+z<T-MSJYPOsK2`3KFOaX7Z<aqNKP&$xB`hT|MVX>W(WMwu%qcl3gHuMOj8B=EQkh~+
+zX-sjYcv5Dj+?g^jg{0h-vOJ|VWp~Q{l$TOoOL-&ZSjwrCGbwMUyqofM%1<e`QmIrX
+zH6S%8H6&G^T9{gr+9$Pt>VVWisl!tzrP@;KQm3Uhrg~CmrQVS`H+6pM&eWGuKTQ21
+z^{doxQol{TniiNAk`|s8krtH}lh!>gAx)8{PSd3s)3VbnX$5ITX(egH(k7(MOk0|^
+zHSK8HskHCXuBFrIY<fU?P<lvuRC-K$_w@MmUg=5cnd!##g7otADe0c{d($_iZ%yBk
+zzB_$y`o8op(!WdpCH>d*Yw0)BZ)F5#NHU}uaT$sXV@5^B*o;{jT*iWoMH$O7R%Wcp
+zXwBH0@kGY{jHfeYnOT`dnSC=SWZE*9XRgV7A@f+~<t!?T$r5D+WkqI1XT@f9&(dZU
+zXN}I9o^@Z=vaA(ZtFs==+M9JS>xHaiS>I<}&$<cWKdlfcdMJ7-k`!`9nj%A?Q{*V}
+z6ulM2ic-a3#V|#=VuE6l!m606XizjM<|&pc9#E`MtWxY!>`^?fcv7)naaeIgaa8fD
+z;-uo5;+8T)sZ)+oPE;;XE?2Hnu2HU2KBRnDxkI^IxktHA`IPd2@@3_l%D0rKlxLM6
+zDnC)4Q+}>Iue_xEQTdDVii%c6s-jh~svfGIsw9<Mm8LSOa#VS$-l}3%A60+V0M#JX
+z-KrI;b*lBM4XQ^}n^jv?J5;+>dsGKiM^x{sK2UwEI;Z+v^`+{2)fLrM)eY4xHC6|!
+z!_;E6Or51xsx|5yb)LGnda!zwx>{{h*Quwf7pM=ZkE&l&zo|a1{zCnu`ilCh`nm>b
+zXpKk{sF7-VXwo%GjRyV?8)i+eCSTKAQ>GcEnW&kpsn$%<G-#SMPK`%1Q$sWhG>bI%
+zYSw5rX|`&1Xm)G%YM#*S*BsQmrg>BImgbb^tma+K2bzyGpJ;y2+|-J+f!bhgs5V?1
+zqwTIu(Du^Gv~sOdYtr`CR%l0S$7v^OE45bbRINkn)OxftwRdap(Js;6uU)QPsokl4
+zPkUZ_L3>eqN&BPrXYKF0WSvH*(;0PUUAb<G&Y^SaJi3{>2XqhVT6CLr+jKj1`*cs~
+z4(OiI9nu}uy{3CpcU<>@?rYt*y6<&A=`QPj(_Pp7t`F0T^%A{QAE%Gk_tMMsa=lic
+ztIyLH=nM75`hof(`r-O={V4qyy;WbY_vn}C@7FKauhOs8uhTc{x9NB4AJadse?osq
+ze^`G+|EB)9{-pkW{YUyw_222Q>2Dg4filz^?l-JAY%n}xXg2IH>^AH*>@&P>c*pRm
+z;WNW|!v(`d!!L$k4c81e47ZHf7;Kaol}59%)Hv8U%vf$5WgKg)GS(QU80(BvjrGPQ
+z#;wLTjGr5SF#c@3Z2Zl5-FVX^GKHAJO%W!EDbbW-N;74cR3@#-U^1C{oBEqZn#P$X
+zm?oL3O;b#E(=?OEG|#lu^nhuFX|-vsX`N}8>7eNu)3c`MOmCQun@*Tco8C6PYdU8-
+zZ@OT*X!_1{&2-C*&9pht9AXYPi_H<{?&dVJ!mKiD%tmvz*<#K&_cfQBCz-A08gs3A
+zs=2{D%RI+C&&-+cHs51jY~F4@X1-{?mE9{_k!{H?$S%q*&F+^yAbW83u<Xk0s_dHV
+zDcN<|Q?u){8?&3T7i4eFK9>DMPFRjMXLQcw9BWQ>PE*d@9FnsjXHm}LocnT?<!s1#
+zG^ZtJbI#VB9XY#l9?LnJb2jJ8+~C}t+%dVf+`8OpxsAEgb6vR$b64iB$z7NGQ0^nS
+z8*?AaeKz-n+#|V1bKl54o_jL)bncnlbGhepFXUd#{UP_~+$*`iSwbu_i`t^I7%kZr
+zizVMOz%tk}%u;R{Wf^0!S?VlPEe)0?i_<dSa+hVH<zCBD%l(%1mWM4HEv=R<mTi`&
+zEc-17EC(&GSdLpxTFzMBv3zVfXZg(Xh2_gUoR^fBotK+8Hg8Ja?7Tbk=I7m&w=nPC
+zyrp>$<gLhCowqe_d)}_RJ$d``p3FOt_e|cQyu*1f=6#fRG4EEsBwv=Fn?EFfYX1EE
+zwfT?cZ_IDW-<iKF|FQf7`A_FRlmAlw%lWV5pU6L%e>(ru{Lk{g$p0$;oBVI{FX!LL
+zzg0jLumu4HQ3Y`YJqi*EWCbY&=>?eu`2~Fo$_vI6j4PN>U@fRAs4cJ;%q$=U_ZO@z
+uSY5ET;Gu#?3YrUA3-%Wr?w#0M*W27X-<yj>@Zyd4Pt;HN_I>v5{eJ-6{)7ww
+
+literal 0
+HcmV?d00001
+
+diff --git a/お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist b/お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+new file mode 100644
+index 0000000..fe2b454
+--- /dev/null
++++ b/お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Bucket
++   type = "1"
++   version = "2.0">
++</Bucket>
+diff --git a/お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcschemes/HomemakerCalc.xcscheme b/お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcschemes/HomemakerCalc.xcscheme
+new file mode 100644
+index 0000000..47f7468
+--- /dev/null
++++ b/お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcschemes/HomemakerCalc.xcscheme
+@@ -0,0 +1,96 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Scheme
++   LastUpgradeVersion = "0510"
++   version = "1.3">
++   <BuildAction
++      parallelizeBuildables = "YES"
++      buildImplicitDependencies = "YES">
++      <BuildActionEntries>
++         <BuildActionEntry
++            buildForTesting = "YES"
++            buildForRunning = "YES"
++            buildForProfiling = "YES"
++            buildForArchiving = "YES"
++            buildForAnalyzing = "YES">
++            <BuildableReference
++               BuildableIdentifier = "primary"
++               BlueprintIdentifier = "4188650618F912E0000F1914"
++               BuildableName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.app"
++               BlueprintName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;"
++               ReferencedContainer = "container:&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.xcodeproj">
++            </BuildableReference>
++         </BuildActionEntry>
++      </BuildActionEntries>
++   </BuildAction>
++   <TestAction
++      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
++      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
++      shouldUseLaunchSchemeArgsEnv = "YES"
++      buildConfiguration = "Debug">
++      <Testables>
++         <TestableReference
++            skipped = "NO">
++            <BuildableReference
++               BuildableIdentifier = "primary"
++               BlueprintIdentifier = "4188652718F912E0000F1914"
++               BuildableName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;Tests.xctest"
++               BlueprintName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;Tests"
++               ReferencedContainer = "container:&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.xcodeproj">
++            </BuildableReference>
++         </TestableReference>
++      </Testables>
++      <MacroExpansion>
++         <BuildableReference
++            BuildableIdentifier = "primary"
++            BlueprintIdentifier = "4188650618F912E0000F1914"
++            BuildableName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.app"
++            BlueprintName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;"
++            ReferencedContainer = "container:&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.xcodeproj">
++         </BuildableReference>
++      </MacroExpansion>
++   </TestAction>
++   <LaunchAction
++      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
++      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
++      launchStyle = "0"
++      useCustomWorkingDirectory = "NO"
++      buildConfiguration = "Debug"
++      ignoresPersistentStateOnLaunch = "NO"
++      debugDocumentVersioning = "YES"
++      allowLocationSimulation = "YES">
++      <BuildableProductRunnable>
++         <BuildableReference
++            BuildableIdentifier = "primary"
++            BlueprintIdentifier = "4188650618F912E0000F1914"
++            BuildableName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.app"
++            BlueprintName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;"
++            ReferencedContainer = "container:&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.xcodeproj">
++         </BuildableReference>
++      </BuildableProductRunnable>
++      <AdditionalOptions>
++      </AdditionalOptions>
++   </LaunchAction>
++   <ProfileAction
++      shouldUseLaunchSchemeArgsEnv = "YES"
++      savedToolIdentifier = ""
++      useCustomWorkingDirectory = "NO"
++      buildConfiguration = "Release"
++      debugDocumentVersioning = "YES">
++      <BuildableProductRunnable>
++         <BuildableReference
++            BuildableIdentifier = "primary"
++            BlueprintIdentifier = "4188650618F912E0000F1914"
++            BuildableName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.app"
++            BlueprintName = "&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;"
++            ReferencedContainer = "container:&#x304a;&#x8ca1;&#x5e03;&#x96fb;&#x5353;.xcodeproj">
++         </BuildableReference>
++      </BuildableProductRunnable>
++   </ProfileAction>
++   <AnalyzeAction
++      buildConfiguration = "Debug">
++   </AnalyzeAction>
++   <ArchiveAction
++      buildConfiguration = "Release"
++      revealArchiveInOrganizer = "YES">
++   </ArchiveAction>
++</Scheme>
+diff --git a/お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcschemes/xcschememanagement.plist b/お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcschemes/xcschememanagement.plist
+new file mode 100644
+index 0000000..d38612b
+--- /dev/null
++++ b/お財布電卓.xcodeproj/xcuserdata/chefalice.xcuserdatad/xcschemes/xcschememanagement.plist
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>SchemeUserState</key>
++	<dict>
++		<key>HomemakerCalc.xcscheme</key>
++		<dict>
++			<key>orderHint</key>
++			<integer>0</integer>
++		</dict>
++	</dict>
++	<key>SuppressBuildableAutocreation</key>
++	<dict>
++		<key>4188650618F912E0000F1914</key>
++		<dict>
++			<key>primary</key>
++			<true/>
++		</dict>
++		<key>4188652718F912E0000F1914</key>
++		<dict>
++			<key>primary</key>
++			<true/>
++		</dict>
++	</dict>
++</dict>
++</plist>
+diff --git a/お財布電卓.xcodeproj/xcuserdata/morikawaakira.xcuserdatad/xcschemes/HomemakerCalc.xcscheme b/お財布電卓.xcodeproj/xcuserdata/morikawaakira.xcuserdatad/xcschemes/HomemakerCalc.xcscheme
+new file mode 100644
+index 0000000..1d61642
+--- /dev/null
++++ b/お財布電卓.xcodeproj/xcuserdata/morikawaakira.xcuserdatad/xcschemes/HomemakerCalc.xcscheme
+@@ -0,0 +1,96 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Scheme
++   LastUpgradeVersion = "0500"
++   version = "1.3">
++   <BuildAction
++      parallelizeBuildables = "YES"
++      buildImplicitDependencies = "YES">
++      <BuildActionEntries>
++         <BuildActionEntry
++            buildForTesting = "YES"
++            buildForRunning = "YES"
++            buildForProfiling = "YES"
++            buildForArchiving = "YES"
++            buildForAnalyzing = "YES">
++            <BuildableReference
++               BuildableIdentifier = "primary"
++               BlueprintIdentifier = "4188650618F912E0000F1914"
++               BuildableName = "HomemakerCalc.app"
++               BlueprintName = "HomemakerCalc"
++               ReferencedContainer = "container:HomemakerCalc.xcodeproj">
++            </BuildableReference>
++         </BuildActionEntry>
++      </BuildActionEntries>
++   </BuildAction>
++   <TestAction
++      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
++      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
++      shouldUseLaunchSchemeArgsEnv = "YES"
++      buildConfiguration = "Debug">
++      <Testables>
++         <TestableReference
++            skipped = "NO">
++            <BuildableReference
++               BuildableIdentifier = "primary"
++               BlueprintIdentifier = "4188652718F912E0000F1914"
++               BuildableName = "HomemakerCalcTests.xctest"
++               BlueprintName = "HomemakerCalcTests"
++               ReferencedContainer = "container:HomemakerCalc.xcodeproj">
++            </BuildableReference>
++         </TestableReference>
++      </Testables>
++      <MacroExpansion>
++         <BuildableReference
++            BuildableIdentifier = "primary"
++            BlueprintIdentifier = "4188650618F912E0000F1914"
++            BuildableName = "HomemakerCalc.app"
++            BlueprintName = "HomemakerCalc"
++            ReferencedContainer = "container:HomemakerCalc.xcodeproj">
++         </BuildableReference>
++      </MacroExpansion>
++   </TestAction>
++   <LaunchAction
++      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
++      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
++      launchStyle = "0"
++      useCustomWorkingDirectory = "NO"
++      buildConfiguration = "Debug"
++      ignoresPersistentStateOnLaunch = "NO"
++      debugDocumentVersioning = "YES"
++      allowLocationSimulation = "YES">
++      <BuildableProductRunnable>
++         <BuildableReference
++            BuildableIdentifier = "primary"
++            BlueprintIdentifier = "4188650618F912E0000F1914"
++            BuildableName = "HomemakerCalc.app"
++            BlueprintName = "HomemakerCalc"
++            ReferencedContainer = "container:HomemakerCalc.xcodeproj">
++         </BuildableReference>
++      </BuildableProductRunnable>
++      <AdditionalOptions>
++      </AdditionalOptions>
++   </LaunchAction>
++   <ProfileAction
++      shouldUseLaunchSchemeArgsEnv = "YES"
++      savedToolIdentifier = ""
++      useCustomWorkingDirectory = "NO"
++      buildConfiguration = "Release"
++      debugDocumentVersioning = "YES">
++      <BuildableProductRunnable>
++         <BuildableReference
++            BuildableIdentifier = "primary"
++            BlueprintIdentifier = "4188650618F912E0000F1914"
++            BuildableName = "HomemakerCalc.app"
++            BlueprintName = "HomemakerCalc"
++            ReferencedContainer = "container:HomemakerCalc.xcodeproj">
++         </BuildableReference>
++      </BuildableProductRunnable>
++   </ProfileAction>
++   <AnalyzeAction
++      buildConfiguration = "Debug">
++   </AnalyzeAction>
++   <ArchiveAction
++      buildConfiguration = "Release"
++      revealArchiveInOrganizer = "YES">
++   </ArchiveAction>
++</Scheme>
+diff --git a/お財布電卓.xcodeproj/xcuserdata/morikawaakira.xcuserdatad/xcschemes/xcschememanagement.plist b/お財布電卓.xcodeproj/xcuserdata/morikawaakira.xcuserdatad/xcschemes/xcschememanagement.plist
+new file mode 100644
+index 0000000..d38612b
+--- /dev/null
++++ b/お財布電卓.xcodeproj/xcuserdata/morikawaakira.xcuserdatad/xcschemes/xcschememanagement.plist
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>SchemeUserState</key>
++	<dict>
++		<key>HomemakerCalc.xcscheme</key>
++		<dict>
++			<key>orderHint</key>
++			<integer>0</integer>
++		</dict>
++	</dict>
++	<key>SuppressBuildableAutocreation</key>
++	<dict>
++		<key>4188650618F912E0000F1914</key>
++		<dict>
++			<key>primary</key>
++			<true/>
++		</dict>
++		<key>4188652718F912E0000F1914</key>
++		<dict>
++			<key>primary</key>
++			<true/>
++		</dict>
++	</dict>
++</dict>
++</plist>
+-- 
+1.8.4.2
+

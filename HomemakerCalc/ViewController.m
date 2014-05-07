@@ -39,8 +39,9 @@ NSUserDefaults *Save;
 //アプリが起動された直後に呼ばれるところ
 - (void)viewDidLoad
 {
-    //キーボードを隠す処理の準備
     [super viewDidLoad];
+    
+    //キーボードを隠す処理の準備
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeSoftKeyboard)];
     [self.view addGestureRecognizer:gestureRecognizer];
     
