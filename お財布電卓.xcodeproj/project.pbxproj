@@ -20,6 +20,7 @@
 		4188652C18F912E0000F1914 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4188650E18F912E0000F1914 /* UIKit.framework */; };
 		4188653418F912E0000F1914 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4188653218F912E0000F1914 /* InfoPlist.strings */; };
 		4188653618F912E0000F1914 /* HomemakerCalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4188653518F912E0000F1914 /* HomemakerCalcTests.m */; };
+		7033E4E9190E334100B91F73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7033E4E8190E334100B91F73 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		4188653118F912E0000F1914 /* お財布電卓Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "お財布電卓Tests-Info.plist"; sourceTree = "<group>"; };
 		4188653318F912E0000F1914 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4188653518F912E0000F1914 /* HomemakerCalcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomemakerCalcTests.m; sourceTree = "<group>"; };
+		7033E4E8190E334100B91F73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				4188651A18F912E0000F1914 /* AppDelegate.m */,
 				4188651F18F912E0000F1914 /* ViewController.h */,
 				4188652018F912E0000F1914 /* ViewController.m */,
+				7033E4E8190E334100B91F73 /* Main.storyboard */,
 				4188652218F912E0000F1914 /* Images.xcassets */,
 				4188651118F912E0000F1914 /* Supporting Files */,
 			);
@@ -225,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7033E4E9190E334100B91F73 /* Main.storyboard in Resources */,
 				4188652318F912E0000F1914 /* Images.xcassets in Resources */,
 				4188651518F912E0000F1914 /* InfoPlist.strings in Resources */,
 			);
