@@ -101,8 +101,8 @@ NSUserDefaults *Save;
     //ボタンを押されたら計算
     
     //予算項目
-    NSMutableString *text = [_CashText.text mutableCopy];
-    Cash = [text intValue];
+    NSMutableString *budgetText = [_CashText.text mutableCopy];
+    Cash = [budgetText intValue];
     
     //商品価格項目
     NSMutableString *inputPriceText = [_PriceText.text mutableCopy];
